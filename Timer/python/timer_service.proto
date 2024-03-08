@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package timer;
+
+// Service definition
+service TimerService {
+  // Registers a timer with a specified duration and supports server streaming for responses.
+  rpc RegisterTimer (TimerRequest) returns (stream TimerResponse) {}
+}
+
+// The request message containing the duration of the timer.
+message TimerRequest {
+  int32 duration = 1; // Timer duration in seconds
+}
+
+// The response message containing the result 
+message TimerResponse {
+  string message = 1; // "Timer started" or "Timer expired"
+}
